@@ -1,3 +1,4 @@
+import unittest
 def caesarCipher(s, k):
     ans = ''
     k = k % 26 
@@ -10,15 +11,16 @@ def caesarCipher(s, k):
             ans += i 
     return ans
 
-def test_caesarCipher():
-    assert caesarCipher("abc", 1) == "bcd"    
-    assert caesarCipher("xyz", 3) == "abc"
-    assert caesarCipher("Hello, World!", 0) == "Hello, World!"
-    assert caesarCipher("Hello, World!", 5) == "Mjqqt, Btwqi!"
-    assert caesarCipher("abc", 29) == "def"
-    assert caesarCipher("AbC", 2) == "CdE"
-    assert caesarCipher("def", -3) == "abc"
-    assert caesarCipher("", 5) == ""
+class Test_caesarCipher(unittest.TestCase):
+    def test_cases(self):
+        self.assertEqual(caesarCipher("abc", 1), "bcd")
+        self.assertEqual(caesarCipher("xyz", 3), "abc")
+        self.assertEqual(caesarCipher("Hello, World!", 0), "Hello, World!")
+        self.assertEqual(caesarCipher("Hello, World!", 5), "Mjqqt, Btwqi!")
+        self.assertEqual(caesarCipher("abc", 29), "def")
+        self.assertEqual(caesarCipher("AbC", 2), "CdE")
+        self.assertEqual(caesarCipher("def", -3), "abc")
+        self.assertEqual(caesarCipher("", 5), "")
 
-test_caesarCipher()
+Test_caesarCipher()
 print("All test cases passed!")

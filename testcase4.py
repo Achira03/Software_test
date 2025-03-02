@@ -1,3 +1,5 @@
+import unittest
+
 def alternate(s):
     lens = [0]
     letters = list(set(list(s)))
@@ -26,16 +28,16 @@ def alternate(s):
             lens.append(len(two))
     return max(lens)
 
+class Test_alternate(unittest.TestCase):
+    def test_cases(self):
+        self.assertEqual(alternate("beabeefeab"), 5)  # "babab" or "ababa"
+        self.assertEqual(alternate("aaaa"), 0)
+        self.assertEqual(alternate("abcde"), 2)  # "ab" or "bc" or "cd" or "de"
+        self.assertEqual(alternate("ababab"), 6)
+        self.assertEqual(alternate("a"), 0)
+        self.assertEqual(alternate(""), 0)
+        self.assertEqual(alternate("abababababababababab"), 20)
+        self.assertEqual(alternate("aaaaaaaaaaaaaaaaaaaa"), 0)
 
-def test_alternate():
-    assert alternate("beabeefeab") == 5  # "babab" or "ababa"
-    assert alternate("aaaa") == 0
-    assert alternate("abcde") == 2  # "ab" or "bc" or "cd" or "de"
-    assert alternate("ababab") == 6
-    assert alternate("a") == 0
-    assert alternate("") == 0
-    assert alternate("abababababababababab") == 20
-    assert alternate("aaaaaaaaaaaaaaaaaaaa") == 0
-
-test_alternate()
+Test_alternate()
 print("All test cases passed!")
